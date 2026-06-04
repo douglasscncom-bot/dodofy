@@ -1,0 +1,9 @@
+# Não ignorar arquivos importantes
+!CNAME
+!.github/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+*.bak
+.backup-*
