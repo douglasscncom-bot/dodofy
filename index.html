@@ -8,6 +8,41 @@
 <title>Dodofy</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dodofy",
+  "url": "https://dodofy.com.br",
+  "logo": "https://dodofy.com.br/images/logo-dodofy.png",
+  "description": "Implementação e automação de CRM jurídico com POPs estruturados para escritórios de advocacia",
+  "areaServed": {
+    "@type": "Country",
+    "name": "BR"
+  },
+  "knowsAbout": [
+    "Mapeamento de processos BPMN",
+    "Automação de fluxos jurídicos",
+    "Implementação de CRM para advocacia",
+    "POP - Procedimento Operacional Padrão",
+    "Gestão de escritórios de advocacia",
+    "Automação para escritório",
+    "CRM jurídico"
+  ],
+  "foundingDate": "2023",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "email": "douglas@dodofy.com.br",
+    "url": "https://wa.me/556281234567"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/dodofy/",
+    "https://www.facebook.com/dodofy.com.br/",
+    "https://www.instagram.com/dodofy.com.br/"
+  ]
+}
+</script>
 <style>
   :root {
     --bg-deep: #030a1c;
@@ -1614,19 +1649,18 @@
     <div class="hero-content">
       <div>
         <div class="section-pill">Bem vindos!</div>
-        <h1>O fim<br>do caos operacional<br>no seu <span class="grad">escritório<br>de advocacia</span></h1>
+        <h1>Mapeamento e automação de processos<br>para seu <span class="grad">escritório<br>de advocacia</span></h1>
         <p class="subhead">
-          Estruturamos o <strong style="color:var(--text);">CRM jurídico</strong> do seu escritório
-          com a metodologia de <strong style="color:var(--text);">POPs</strong> e
-          <strong style="color:var(--text);">automações inteligentes</strong>.
-          Sua operação passa a rodar com consistência e o sócio para de apagar incêndios todos os dias.
+          Implementamos <strong style="color:var(--text);">CRM jurídico</strong> com <strong style="color:var(--text);">mapeamento BPMN</strong> e <strong style="color:var(--text);">POPs estruturados</strong>.
+          <strong style="color:var(--text);">Automação de fluxos</strong> que transformam a operação do seu escritório.
+          Consistência operacional, gestão profissional, e fim do caos administrativo.
         </p>
         <a href="https://dodofy.com.br/formulario" class="cta-button">Quero profissionalizar minha gestão</a>
         <div class="hero-badges">
-          <span class="hero-badge">CRM jurídico</span>
-          <span class="hero-badge">Automações &amp; IA</span>
-          <span class="hero-badge">Modelos prontos</span>
-          <span class="hero-badge">Mapeamento BPMN</span>
+          <span class="hero-badge">CRM para advocacia</span>
+          <span class="hero-badge">Mapeamento de processos</span>
+          <span class="hero-badge">POP estruturado</span>
+          <span class="hero-badge">Automação jurídica</span>
         </div>
       </div>
       <div class="hero-visual">
@@ -2102,7 +2136,7 @@
 <!-- ============ 9. AUTORIDADE ============ -->
 <section id="autoridade" class="section">  <div class="container">
     <div class="section-pill">Quem somos</div>
-    <h2>Construído por quem conhece as dores de dezenas de escritórios por dentro</h2>
+    <h2>Implementação de CRM jurídico por quem transformou 30+ escritórios de advocacia</h2>
     <div class="auth-grid">
       <div class="auth-photo-frame" onclick="openBioModal()">
         <div class="auth-photo"><picture><source srcset="images/douglas-soares.webp" type="image/webp"><img src="images/douglas-soares.png" alt="Douglas Soares, Fundador Dodofy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position: absolute; inset: 0; z-index: 1;"></picture></div>
@@ -2704,44 +2738,4 @@
     // Abre o modal se a URL contém /bio - executa ANTES de qualquer outra coisa
     function checkBioUrlOnLoad() {
       if (isBioUrl()) {
-        // Abre imediatamente sem delay
-        setTimeout(() => openBioModal(), 10);
-      }
-    }
-
-    // Verifica antes do DOMContentLoaded
-    if (isBioUrl()) {
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Verifica ao carregar a página
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', checkBioUrlOnLoad);
-    } else {
-      checkBioUrlOnLoad();
-    }
-
-    // Verifica imediatamente também
-    setTimeout(checkBioUrlOnLoad, 50);
-
-    // Monitora mudanças de URL (navegação com botões de voltar)
-    window.addEventListener('popstate', () => {
-      if (isBioUrl()) {
-        openBioModal();
-      } else {
-        if (document.getElementById('bioModal').classList.contains('open')) {
-          closeBioModal();
-        }
-      }
-    });
-
-    // Monitora mudanças de hash também
-    window.addEventListener('hashchange', () => {
-      if (isBioUrl()) {
-        openBioModal();
-      } else {
-        if (document.getElementById('bioModal').classList.contains('open')) {
-          closeBioModal();
-        }
- 
+        // A
