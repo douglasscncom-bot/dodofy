@@ -2106,7 +2106,7 @@
     <div class="section-pill">Quem somos</div>
     <h2>Construído por quem conhece as dores de dezenas de escritórios por dentro</h2>
     <div class="auth-grid">
-      <div class="auth-photo-frame">
+      <div class="auth-photo-frame" onclick="openBioModal()">
         <div class="auth-photo"><picture><source srcset="images/douglas-soares.webp" type="image/webp"><img src="images/douglas-soares.png" alt="Douglas Soares, Fundador Dodofy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; position: absolute; inset: 0; z-index: 1;"</picture></div>
       </div>
       <div>
@@ -2659,4 +2659,109 @@
 
   <div class="bio-modal-overlay" id="bioModal">
     <div class="bio-modal-container">
-      <button class="bio-moda
+          <button class="bio-modal-close" onclick="closeBioModal()">&times;</button>
+      <iframe class="bio-modal-frame" src="bio-page.html"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openBioModal() {
+      const bioModal = document.getElementById('bioModal');
+      bioModal.classList.add('open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+      window.history.pushState(null, '', '/bio');
+    }
+
+    function closeBioModal() {
+      const bioModal = document.getElementById('bioModal');
+      bioModal.classList.remove('open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+      window.history.pushState(null, '', '/');
+    }
+
+    // Abre o modal ao clicar na foto
+    document.querySelector('.auth-photo-frame')?.addEventListener('click', openBioModal);
+
+    // Fecha ao clicar no fundo do overlay
+    document.getElementById('bioModal').addEventListener('click', e => {
+      if (e.target.id === 'bioModal') closeBioModal();
+    });
+
+    // Fecha com Esc
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && document.getElementById('bioModal').classList.contains('open')) {
+        closeBioModal();
+      }
+    });
+
+    // Verifica se a URL atual é /bio
+    function isBioUrl() {
+      return window.location.pathname === '/bio' ||
+             window.location.hash === '#/bio';
+    }
+
+    // Abre o modal se a URL contém /bio - executa ANTES de qualquer outra coisa
+    function checkBioUrlOnLoad() {
+      if (isBioUrl()) {
+        // Abre imediatamente sem delay
+        setTimeout(() => openBioModal(), 10);
+      }
+    }
+
+    // Verifica antes do DOMContentLoaded
+    if (isBioUrl()) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Verifica ao carregar a página
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkBioUrlOnLoad);
+    } else {
+      checkBioUrlOnLoad();
+    }
+
+    // Verifica imediatamente também
+    setTimeout(checkBioUrlOnLoad, 50);
+
+    // Monitora mudanças de URL (navegação com botões de voltar)
+    window.addEventListener('popstate', () => {
+      if (isBioUrl()) {
+        openBioModal();
+      } else {
+        if (document.getElementById('bioModal').classList.contains('open')) {
+          closeBioModal();
+        }
+      }
+    });
+
+    // Monitora mudanças de hash também
+    window.addEventListener('hashchange', () => {
+      if (isBioUrl()) {
+        openBioModal();
+      } else {
+        if (document.getElementById('bioModal').classList.contains('open')) {
+          closeBioModal();
+        }
+      }
+    });
+
+    // Bloqueia scroll enquanto modal está aberta
+    document.addEventListener('wheel', (e) => {
+      if (document.getElementById('bioModal').classList.contains('open')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener('touchmove', (e) => {
+      if (document.getElementById('bioModal').classList.contains('open')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+
+</body>
+</html>
