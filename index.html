@@ -2756,3 +2756,12 @@
         e.preventDefault();
       }
     }, { passive: false });
+    document.addEventListener('touchmove', (e) => {
+      if (document.getElementById('bioModal').classList.contains('open')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+
+</body>
+</html>
