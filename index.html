@@ -2669,22 +2669,30 @@
       }
     }
 
-    // Abre o modal ao clicar na foto
-    document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar event listeners de forma não-blocking
+    function initializeEventListeners() {
+      // Abre o modal ao clicar na foto
       document.querySelector('.auth-photo-frame')?.addEventListener('click', openBioModal);
-    });
 
-    // Fecha ao clicar no fundo do overlay
-    document.getElementById('bioModal').addEventListener('click', e => {
-      if (e.target.id === 'bioModal') closeBioModal();
-    });
+      // Fecha ao clicar no fundo do overlay
+      document.getElementById('bioModal')?.addEventListener('click', e => {
+        if (e.target.id === 'bioModal') closeBioModal();
+      });
 
-    // Fecha com Esc
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && document.getElementById('bioModal').classList.contains('open')) {
-        closeBioModal();
-      }
-    });
+      // Fecha com Esc
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && document.getElementById('bioModal')?.classList.contains('open')) {
+          closeBioModal();
+        }
+      });
+    }
+
+    // Usar requestIdleCallback se disponível, senão setTimeout
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initializeEventListeners, { timeout: 2000 });
+    } else {
+      setTimeout(initializeEventListeners, 0);
+    }
 
     // Verifica se a URL atual é /bio ou #/bio
     function isBioUrl() {
@@ -2736,16 +2744,4 @@
         if (document.getElementById('bioModal').classList.contains('open')) {
           closeBioModal();
         }
-      }
-    });
-
-    // Bloqueia scroll enquanto modal está aberta
-    document.addEventListener('wheel', (e) => {
-      if (document.getElementById('bioModal').classList.contains('open')) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-  </script>
-</body>
-</html>
-                             
+ 
