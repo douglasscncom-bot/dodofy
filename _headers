@@ -5,6 +5,8 @@
   X-Frame-Options: SAMEORIGIN
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
 
 # Cache para imagens (1 ano)
 /images/*
@@ -14,8 +16,4 @@
   Cache-Control: public, max-age=31536000, immutable
 
 # Cache para WebP (1 ano)
-/*.webp
-  Cache-Control: public, max-age=31536000, immutable
-
-/images/**/*.webp
-  Cache-Co
+/
