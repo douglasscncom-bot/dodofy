@@ -2189,6 +2189,7 @@
     <div class="logo-circle"><picture><source srcset="images/clientes/terrengui.webp" type="image/webp"><img src="images/clientes/terrengui.jpg" alt="Terrengui" title="Terrengui"</picture></div>
     <div class="logo-circle"><picture><source srcset="images/clientes/titanium.webp" type="image/webp"><img src="images/clientes/titanium.jpg" alt="Titanium" title="Titanium"</picture></div>
     <div class="logo-circle"><picture><source srcset="images/clientes/xavier.webp" type="image/webp"><img src="images/clientes/xavier.jpg" alt="Xavier" title="Xavier"</picture></div>
+    <div class="logo-circle"><picture><source srcset="images/clientes/vitor-dias.webp" type="image/webp"><img src="images/clientes/vitor-dias.jpg" alt="VD Advocacia" title="VD Advocacia"</picture></div>
   </div>
       </div>
     </div>
@@ -2738,4 +2739,55 @@
     // Abre o modal se a URL contém /bio - executa ANTES de qualquer outra coisa
     function checkBioUrlOnLoad() {
       if (isBioUrl()) {
-        // A
+        // Abre imediatamente sem delay
+        setTimeout(() => openBioModal(), 10);
+      }
+    }
+
+    // Verifica antes do DOMContentLoaded
+    if (isBioUrl()) {
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Verifica ao carregar a página
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkBioUrlOnLoad);
+    } else {
+      checkBioUrlOnLoad();
+    }
+
+    // Verifica imediatamente também
+    setTimeout(checkBioUrlOnLoad, 50);
+
+    // Monitora mudanças de URL (navegação com botões de voltar)
+    window.addEventListener('popstate', () => {
+      if (isBioUrl()) {
+        openBioModal();
+      } else {
+        if (document.getElementById('bioModal').classList.contains('open')) {
+          closeBioModal();
+        }
+      }
+    });
+
+    // Monitora mudanças de hash também
+    window.addEventListener('hashchange', () => {
+      if (isBioUrl()) {
+        openBioModal();
+      } else {
+        if (document.getElementById('bioModal').classList.contains('open')) {
+          closeBioModal();
+        }
+      }
+    });
+
+    // Bloqueia scroll enquanto modal está aberta
+    document.addEventListener('wheel', (e) => {
+      if (document.getElementById('bioModal').classList.contains('open')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+</body>
+</html>
