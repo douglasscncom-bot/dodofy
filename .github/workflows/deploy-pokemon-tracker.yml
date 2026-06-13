@@ -7,6 +7,7 @@ on:
       - claude/pokemon-go-battle-app-eq68i7
     paths:
       - 'pokemon-tracker/**'
+      - '.github/workflows/deploy-pokemon-tracker.yml'
   workflow_dispatch:
 
 permissions:
@@ -34,14 +35,34 @@ jobs:
         working-directory: pokemon-tracker
         run: npm ci
 
-      - name: Build
+      - name: Build Pokemon Tracker
         working-directory: pokemon-tracker
         run: npm run build
 
-      - name: Upload artifact
+      - name: Assemble deploy folder
+        run: |
+          mkdir -p _deploy/pokemon-tracker
+
+          # Copy existing website files (root of repo)
+          rsync -av --exclude='pokemon-tracker' \
+                    --exclude='.github' \
+                    --exclude='.git' \
+                    --exclude='node_modules' \
+                    --exclude='_deploy' \
+                    . _deploy/
+
+          # Copy built Pokemon Tracker into subfolder
+          cp -r pokemon-tracker/dist/. _deploy/pokemon-tracker/
+
+          echo "=== Deploy folder structure ==="
+          ls _deploy/
+          echo "=== pokemon-tracker subfolder ==="
+          ls _deploy/pokemon-tracker/
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: pokemon-tracker/dist
+          path: _deploy
 
   deploy:
     environment:
