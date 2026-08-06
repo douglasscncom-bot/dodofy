@@ -363,20 +363,23 @@
   }
 
   .hero-badges {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
     margin-top: 32px;
   }
   .hero-badge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
     background: rgba(94, 163, 255, 0.08);
     border: 1px solid var(--border);
-    padding: 8px 16px;
-    border-radius: 30px;
-    font-size: 13px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 1.3;
     color: var(--text-muted);
   }
   .hero-badge::before { content: '✓'; color: var(--green); font-weight: 700; }
@@ -1620,6 +1623,7 @@
     h2 { font-size: 30px; }
     .nav { display: none; }
     .section { padding: 70px 20px; }
+    .hero-badges { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -1653,12 +1657,12 @@
         <p class="subhead">
           Implementamos <strong style="color:var(--text);">CRM jurídico</strong> com <strong style="color:var(--text);">mapeamento BPMN</strong> e <strong style="color:var(--text);">POPs estruturados</strong>.
           <strong style="color:var(--text);">Automação de fluxos</strong> que transformam a operação do seu escritório.
-          Consistência operacional, gestão profissional, e fim do caos administrativo.
+          Consistência operacional, gestão profissional e fim do caos administrativo.
         </p>
         <a href="https://dodofy.com.br/formulario" class="cta-button">Quero profissionalizar minha gestão</a>
         <div class="hero-badges">
           <span class="hero-badge">CRM para advocacia</span>
-          <span class="hero-badge">Mapeamento de processos</span>
+          <span class="hero-badge">Mapeamento de procedimentos</span>
           <span class="hero-badge">POP estruturado</span>
           <span class="hero-badge">Automação jurídica</span>
         </div>
@@ -1725,7 +1729,7 @@
       <div>
         <h3 style="font-size: 26px; color: var(--text);">POP (Procedimento Operacional Padrão)</h3>
         <p>
-          É o desenho documentado de como cada processo do escritório deve ser executado:
+          É o desenho documentado de como cada procedimento do escritório deve ser executado:
           quais são as fases, o que se faz em cada uma, quem é o responsável,
           o que precisa estar concluído antes de avançar e qual é a entrega esperada.
         </p>
@@ -1928,7 +1932,7 @@
     <div class="section-pill">Diferencial técnico</div>
     <h2>Por que um CRM comum não basta?</h2>
     <p class="lead">
-      A maioria dos CRMs promete "organizar processos", mas na prática entrega apenas um kanban onde cartões podem ser arrastados livremente. Um POP de verdade exige <strong style="color:var(--text);">controle real do fluxo de trabalho</strong>.
+      A maioria dos CRMs promete "organizar procedimentos", mas na prática entrega apenas um kanban onde cartões podem ser arrastados livremente. Um POP de verdade exige <strong style="color:var(--text);">controle real do fluxo de trabalho</strong>.
     </p>
     <div class="diff-comparison">
       <div class="diff-card diff-bad">
@@ -1975,7 +1979,7 @@
         <span class="tool-tag">Para público geral</span>
         <h3>Pipefy</h3>
         <p>
-          CRM global para empresas de qualquer segmento. Oferece flexibilidade e controle real de fluxo adaptável para diversos tipos de negócios e processos.
+          CRM global para empresas de qualquer segmento. Oferece flexibilidade e controle real de fluxo adaptável para diversos tipos de negócios e procedimentos.
         </p>
         <p style="font-size: 14px; color: var(--text-dim); margin-top: 14px;">
           Escolha ideal para empresas que já investiram tempo na ferramenta, que vêm de outro setor utilizando Pipefy, ou que preferem uma solução versátil e genérica.
@@ -2062,7 +2066,7 @@
     <h2>Quando o CRM encontra a automação.</h2>
     <p class="lead">
       Depois do POP estruturado, o trabalho repetitivo passa a rodar sozinho.
-      Conectamos seu CRM a todo o ecossistema que o escritório já usa automações que disparam mensagens, geram documentos, cobram, agendam e até aplicam IA aos seus processos.
+      Conectamos seu CRM a todo o ecossistema que o escritório já usa automações que disparam mensagens, geram documentos, cobram, agendam e até aplicam IA aos seus procedimentos.
       O tempo gasto em burocracia volta para o que realmente importa.
     </p>
     <div class="automation-grid">
@@ -2264,7 +2268,7 @@
         Dodofy
       </div>
       <p style="font-size: 14px; line-height: 1.6;">
-        Mapeamento, implementação e automação para escritórios de advocacia. Profissionalização da gestão jurídica através de POPs estruturados, processos com controle real de fluxo e automações inteligentes.
+        Mapeamento, implementação e automação para escritórios de advocacia. Profissionalização da gestão jurídica através de POPs estruturados, procedimentos com controle real de fluxo e automações inteligentes.
       </p>
     </div>
     <div>
@@ -2391,7 +2395,7 @@
     'Holding Familiar': 'Estrutura projetos de planejamento sucessório e proteção patrimonial. Da reunião estratégica inicial e triagem de ativos à constituição das células jurídicas (Cofre, Veículo, Operacional), coleta documental, integralização de bens imóveis e doação de cotas, elaboração do acordo de sócios e entrega final garantindo governança e segurança da família.',
     'Registro de Marca': 'Fluxo completo de Registro de Marcas e Softwares no INPI. Análise de viabilidade e colidência à entrega do certificado. Controle de pagamentos das GRUs, monitoramento de RPI para defesas (oposições/recursos), prazos legais e manutenção do registro (decênio e renovação).',
     'LGPD': 'Adequação à LGPD do diagnóstico inicial e Data Mapping à implementação de políticas, aditivos contratuais e relatórios de impacto (RIPD). Inclui fases de treinamento contínuo e campanhas de conscientização para garantir conformidade legal e cultural.',
-    'Outros': 'Temos capacidade de mapear e implementar qualquer outro fluxo de trabalho personalizado que você necessite. Adaptamos nossos POPs e metodologia MITUS para qualquer processo específico do seu escritório, garantindo estrutura, automação e eficiência.'
+    'Outros': 'Temos capacidade de mapear e implementar qualquer outro fluxo de trabalho personalizado que você necessite. Adaptamos nossos POPs e metodologia MITUS para qualquer procedimento específico do seu escritório, garantindo estrutura, automação e eficiência.'
   };
 
   function openModelModal(modelName) {
